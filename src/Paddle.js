@@ -1,7 +1,7 @@
 export default class Paddle {
-  constructor(gameWidth, gameHeight) {
-    this.gameWidth = gameWidth;
-    this.gameHeight = gameHeight;
+  constructor(Game) {
+    this.GAME_WIDTH = Game.GAME_WIDTH;
+    this.GAME_HEIGHT = Game.GAME_HEIGHT;
 
     this.width = 150;
     this.height = 30;
@@ -13,11 +13,11 @@ export default class Paddle {
       // gameWidht = 800
       // width = 150
       // x = 400 - 75 = 325
-      x: this.gameWidth / 2 - this.width / 2,
-      // gameHeight = 800
+      x: this.GAME_WIDTH / 2 - this.width / 2,
+      // GAME_HEIGHT = 800
       // height = 30
       // y = 400 - 15 - 10 = 375
-      y: this.gameHeight - this.height - 10,
+      y: this.GAME_HEIGHT - this.height - 10,
     };
   }
 
@@ -61,10 +61,10 @@ export default class Paddle {
 
     // setting a bound for the paddle
     if (this.position.x < 0) this.position.x = 0;
-    if (this.position.x + this.width > this.gameWidth)
-      this.position.x = this.gameWidth - this.width;
+    if (this.position.x + this.width > this.GAME_WIDTH)
+      this.position.x = this.GAME_WIDTH - this.width;
 
     // if(this.position.y < 0) this.position.y = 0;
-    // if(this.position.y + this.width > this.gameHeight) this.position.y = this.gameHeight - this.height - 10;
+    // if(this.position.y + this.width > this.GAME_HEIGHT) this.position.y = this.GAME_HEIGHT - this.height - 10;
   }
 }

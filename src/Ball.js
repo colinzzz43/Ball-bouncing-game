@@ -1,10 +1,10 @@
 export default class Ball {
-  constructor(gameWidth, gameHeight) {
-    this.gameHeight = gameHeight;
-    this.gameWidth = gameWidth;
+  constructor(Game) {
+    this.GAME_HEIGHT = Game.GAME_HEIGHT;
+    this.GAME_WIDTH = Game.GAME_WIDTH;
     this.image = document.getElementById("ball");
     this.currentSpeed = {
-      x: 2,
+      x: 4,
       y: 2,
     };
     this.position = {
@@ -31,10 +31,10 @@ export default class Ball {
     this.position.y += this.currentSpeed.y;
 
     // Setting up the boundary for the ball
-    if (this.position.x > this.gameWidth || this.position.x < 0) {
+    if (this.position.x + this.size > this.GAME_WIDTH || this.position.x < 0) {
       this.currentSpeed.x = -this.currentSpeed.x;
     }
-    if (this.position.y > this.gameHeight || this.position.y < 0) {
+    if (this.position.y + this.size > this.GAME_HEIGHT || this.position.y < 0) {
       this.currentSpeed.y = -this.currentSpeed.y;
     }
   }

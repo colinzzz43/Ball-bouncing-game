@@ -1,11 +1,11 @@
-import Paddle from "/First game/src/Paddle.js";
-import Ball from "/First game/src/Ball.js";
-import InputHandler from "/First game/src/Input.js";
-
+import Game from "/First Game/src/Game.js";
 let canvas = document.getElementById("gameScreen");
 
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 800;
+
+let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+game.start();
 
 // The context gives us rendering context for us to draw
 let context = canvas.getContext("2d");
@@ -20,16 +20,7 @@ context.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 // context.fillStyle = 'blue';
 // context.fillRect(200, 200, 100, 100);
 
-// Adding the paddle to the canvas
-let paddle = new Paddle(GAME_WIDTH, GAME_HEIGHT);
-
-// Adding the ball image to the canvas
-let ball = new Ball(GAME_WIDTH, GAME_HEIGHT);
-
-// Handling user inputs and we need to instantiate before the gameLoop
-new InputHandler(paddle);
-
-paddle.draw(context);
+// paddle.draw(context);
 
 let lastTime = 0;
 
@@ -39,11 +30,16 @@ function gameLoop(timestamp) {
   // clear the canvas in the game loop
   context.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
   // update the paddle
-  paddle.update(deltaTime);
-  paddle.draw(context);
+  /*
+    paddle.update(deltaTime);
+    paddle.draw(context);
 
-  ball.draw(context);
-  ball.update(deltaTime);
+    ball.draw(context);
+    ball.update(deltaTime);
+  */
+
+  game.update(deltaTime);
+  game.draw(context);
 
   // When the next frame is ready, call gameLoop
   requestAnimationFrame(gameLoop);
