@@ -22,8 +22,6 @@ export default class Input {
           // alert("Move down");
           paddle.moveDown();
           break;
-        case 66:
-          paddle.handbrake();
       }
     });
 

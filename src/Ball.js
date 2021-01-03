@@ -2,10 +2,13 @@ export default class Ball {
   constructor(Game) {
     this.GAME_HEIGHT = Game.GAME_HEIGHT;
     this.GAME_WIDTH = Game.GAME_WIDTH;
-    this.image = document.getElementById("ball");
+    this.image = document.getElementById("img_ball");
+
+    this.Game = Game;
+
     this.currentSpeed = {
-      x: 4,
-      y: 2,
+      x: 40,
+      y: 15,
     };
     this.position = {
       x: 10,
@@ -30,12 +33,28 @@ export default class Ball {
     this.position.x += this.currentSpeed.x;
     this.position.y += this.currentSpeed.y;
 
-    // Setting up the boundary for the ball
+    // Setting up the boundary of the left or right for the ball
     if (this.position.x + this.size > this.GAME_WIDTH || this.position.x < 0) {
       this.currentSpeed.x = -this.currentSpeed.x;
     }
+    // Wall on the top or the bottom
     if (this.position.y + this.size > this.GAME_HEIGHT || this.position.y < 0) {
       this.currentSpeed.y = -this.currentSpeed.y;
+    }
+    // Check collision with paddle
+    let bottomOfBall = this.position.y + this.size;
+    let topOfPaddle = this.Game.paddle.position.y;
+    let leftSideOfPaddle = this.Game.paddle.position.x;
+    let rightSideOfPaddle =
+      this.Game.paddle.position.x + this.Game.paddle.width;
+
+    if (
+      bottomOfBall >= topOfPaddle &&
+      this.position.x >= leftSideOfPaddle &&
+      this.position.x + this.size <= rightSideOfPaddle
+    ) {
+      this.currentSpeed.y = -this.currentSpeed.y;
+      this.position.y = this.Game.paddle.position.y - this.size;
     }
   }
 }

@@ -42,11 +42,6 @@ export default class Paddle {
     this.currentSpeed = 0;
   }
 
-  // emergency brake
-  handbrake() {
-    this.currentSpeed = 0;
-  }
-
   draw(context) {
     // Set the color of the paddle
     context.fillStyle = "purple";
