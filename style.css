@@ -5,3 +5,8 @@
 img {
   display: none;
 }
+
+.counter {
+  font-size: xx-large;
+  text-align: center;
+}

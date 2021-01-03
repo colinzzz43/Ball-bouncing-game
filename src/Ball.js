@@ -8,7 +8,7 @@ export default class Ball {
 
     this.currentSpeed = {
       x: 40,
-      y: 15,
+      y: 30,
     };
     this.position = {
       x: 10,
@@ -41,6 +41,10 @@ export default class Ball {
     if (this.position.y + this.size > this.GAME_HEIGHT || this.position.y < 0) {
       this.currentSpeed.y = -this.currentSpeed.y;
     }
+
+    // const result_div = document.querySelector(".result > p");
+    // var counter = 0;
+
     // Check collision with paddle
     let bottomOfBall = this.position.y + this.size;
     let topOfPaddle = this.Game.paddle.position.y;
@@ -53,8 +57,10 @@ export default class Ball {
       this.position.x >= leftSideOfPaddle &&
       this.position.x + this.size <= rightSideOfPaddle
     ) {
+      // counter++;
       this.currentSpeed.y = -this.currentSpeed.y;
       this.position.y = this.Game.paddle.position.y - this.size;
+      // whenever change the counter text to counter but it crashed for some reason.
     }
   }
 }

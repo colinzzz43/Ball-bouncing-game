@@ -1,4 +1,5 @@
 import Game from "/First Game/src/Game.js";
+
 let canvas = document.getElementById("gameScreen");
 
 const GAME_WIDTH = 800;
