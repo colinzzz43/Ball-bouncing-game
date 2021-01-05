@@ -1,4 +1,4 @@
-import Brick from "/First game/src/Brick.js";
+import Brick from "/First game/src/anotherBrick.js";
 
 export function buildLevel(Game, Level) {
   let bricks = [];
@@ -8,9 +8,9 @@ export function buildLevel(Game, Level) {
       if (brick === 1) {
         let position = {
           x: 80 * brickIndex,
-          y: 20 + 20 * rowIndex,
+          y: 40 + 20 * rowIndex,
         };
-        bricks.push(new Brick(Game, position));
+        bricks.push(new anotherBrick(Game, position));
       }
     });
   });
