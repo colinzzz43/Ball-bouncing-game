@@ -1,8 +1,8 @@
-import Paddle from "/First game/src/Paddle.js";
-import Ball from "/First game/src/Ball.js";
-import InputHandler from "/First game/src/Input.js";
-import Brick from "/First game/src/Brick.js";
-import { buildLevel, level1 } from "/First game/src/Level.js";
+import Paddle from "../src/Paddle.js";
+import Ball from "../src/Ball.js";
+import InputHandler from "../src/Input.js";
+import Brick from "../src/Brick.js";
+import { buildLevel, level1 } from "../src/Level.js";
 
 export default class Game {
   constructor(GAME_WIDTH, GAME_HEIGHT) {

@@ -7,15 +7,15 @@ export default class Ball {
     this.Game = Game;
 
     this.currentSpeed = {
-      x: 40,
-      y: 30,
+      x: 10,
+      y: 10,
     };
     this.position = {
       x: 10,
       y: 10,
     };
 
-    this.size = 30;
+    this.size = 250;
   }
 
   draw(context) {
