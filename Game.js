@@ -1,8 +1,6 @@
 import Paddle from "./Paddle.js";
 import Ball from "./Ball.js";
 import InputHandler from "./Input.js";
-import Brick from "./Brick.js";
-import { buildLevel, level1 } from "./Level.js";
 
 export default class Game {
   constructor(GAME_WIDTH, GAME_HEIGHT) {
@@ -19,7 +17,6 @@ export default class Game {
 
     // // Adding the brick image to the canvas
     // this.brick = new Brick(this, { x: 20, y: 20 });
-    let bricks = buildLevel(this, level1);
 
     // for (let i = 0; i < 15; i++) {
     //   for (let j = 0; j < 2; j++) {
@@ -28,7 +25,7 @@ export default class Game {
     //   }
     // }
 
-    this.gameObjects = [this.ball, this.paddle, ...bricks];
+    this.gameObjects = [this.ball, this.paddle];
 
     // Handling user inputs and we need to instantiate before the gameLoop
     new InputHandler(this.paddle);

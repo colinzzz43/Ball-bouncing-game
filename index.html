@@ -8,19 +8,24 @@
   </head>
   <body>
     <img id="img_ball" src="assets/images/earth.png" alt="" />
-    <img id="img_brick" src="assets/images/brick.png" alt="" />
-    <canvas id="gameScreen" width="800" height="800"></canvas>
+    <img id="img_background" src="assets/images/background.png" alt="" />
+    <div>Ball Bouncing Game</div>
+    <canvas
+      id="gameScreen"
+      width="800"
+      height="800"
+      style="background: url('./assets/images/background.png')"
+    ></canvas>
     <div></div>
     <script type="module" src="./app.js"></script>
     <script type="module" src="./Ball.js"></script>
-    <script type="module" src="./Brick.js"></script>
     <script type="module" src="./Game.js"></script>
     <script type="module" src="./Input.js"></script>
-    <script type="module" src="./Level.js"></script>
     <script type="module" src="./Paddle.js"></script>
 
     <div class="counter">
-      <p>-</p>
+      <p>WASD to move the top paddle</p>
+      <p>Arrow keys to move the bottom paddle</p>
     </div>
   </body>
 </html>
