@@ -1,7 +1,9 @@
 class TopPaddle {
 
 
-    constructor (gameEngine) {
+    constructor (GameEngine) {
+        this.gameEngine = GameEngine;
+        this.gameEngine.TopPaddle = this;
 
         this.GAME_WIDTH = gameEngine.GAME_WIDTH;
         this.GAME_HEIGHT = gameEngine.GAME_HEIGHT;
@@ -10,7 +12,8 @@ class TopPaddle {
         this.height = 30;
 
         this.maxSpeed = 10;
-        this.currentSpeed = 0;
+        this.currentSpeed = 10;
+
 
         this.position = {
 
@@ -28,13 +31,17 @@ class TopPaddle {
 
     update (deltaTime) {
         // this.position.x += 10 / deltaTime;
-        this.position.x += this.currentSpeed;
         // this.position.y += this.currentSpeed;
 
         // setting a bound for the paddle
         if (this.position.x < 0) this.position.x = 0;
         if (this.position.x + this.width > this.GAME_WIDTH)
         this.position.x = this.GAME_WIDTH - this.width;
+
+        if(this.gameEngine.topPaddleLeft) 
+            this.position.x  -= this.currentSpeed;
+        if(this.gameEngine.topPaddleRight)
+            this.position.x += this.currentSpeed;
 
     }
 

@@ -3,6 +3,9 @@ class BottomPaddle {
 
     constructor (gameEngine) {
 
+        this.gameEngine = gameEngine;
+        this.gameEngine.BottomPaddle = this;
+
         this.GAME_WIDTH = gameEngine.GAME_WIDTH;
         this.GAME_HEIGHT = gameEngine.GAME_HEIGHT;
 
@@ -10,7 +13,7 @@ class BottomPaddle {
         this.height = 30;
 
         this.maxSpeed = 10;
-        this.currentSpeed = 0;
+        this.currentSpeed = 10;
 
         this.position = {
 
@@ -24,7 +27,6 @@ class BottomPaddle {
 
     update (deltaTime) {
         // this.position.x += 10 / deltaTime;
-        this.position.x += this.currentSpeed;
         // this.position.y += this.currentSpeed;
 
         // setting a bound for the paddle
@@ -32,21 +34,18 @@ class BottomPaddle {
         if (this.position.x + this.width > this.GAME_WIDTH)
         this.position.x = this.GAME_WIDTH - this.width;
 
+        if(this.gameEngine.bottomPaddleLeft) 
+        this.position.x  -= this.currentSpeed;
+        if(this.gameEngine.bottomPaddleRight)
+        this.position.x += this.currentSpeed;
+
+
     }
 
 
     draw(context) {
         context.fillStyle = "red";
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
-    }
-
-
-    moveLeft () {
-        this.currentSpeed = -this.maxSpeed;
-    }
-
-    moveRight () {
-        this.currentSpeed = this.maxSpeed;
     }
 
     stop() {

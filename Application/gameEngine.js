@@ -3,15 +3,19 @@
 class GameEngine {
     constructor() {
         this.GAME_WIDTH = 1900;
-        this.GAME_HEIGHT = 1000;
+        this.GAME_HEIGHT = 900;
 
         this.entities = [];
         this.ctx = null;
         this.surfaceWidth = null;
         this.surfaceHeight = null;
 
-        this.left = false;
-        this.right = false;
+        this.topPaddleLeft = false;
+        this.topPaddleRight = false;
+
+        this.bottomPaddleLeft = false;
+        this.bottomPaddleRight = false;
+
         this.up = false;
         this.down = false;
         this.A = false;
@@ -37,22 +41,18 @@ class GameEngine {
 
     startInput() {
         var that = this;
-
+        // Controls for the top paddle
         this.ctx.canvas.addEventListener("keydown", function (e) {
             switch (e.code) {
-                case "ArrowLeft":
                 case "KeyA":
-                    that.left = true;
+                    that.topPaddleLeft = true;
                     break;
-                case "ArrowRight":
                 case "KeyD":
-                    that.right = true;
+                    that.topPaddleRight = true;
                     break;
-                case "ArrowUp":
                 case "KeyW":
                     that.up = true;
                     break;
-                case "ArrowDown":
                 case "KeyS":
                     that.down = true;
                     break;
@@ -69,20 +69,67 @@ class GameEngine {
 
         this.ctx.canvas.addEventListener("keyup", function (e) {
             switch (e.code) {
-                case "ArrowLeft":
                 case "KeyA":
-                    that.left = false;
+                    that.topPaddleLeft = false;
                     break;
-                case "ArrowRight":
                 case "KeyD":
-                    that.right = false;
+                    that.topPaddleRight = false;
                     break;
-                case "ArrowUp":
                 case "KeyW":
                     that.up = false;
                     break;
-                case "ArrowDown":
                 case "KeyS":
+                    that.down = false;
+                    break;
+                case "KeyZ":
+                case "Comma":
+                    that.B = false;
+                    break;
+                case "KeyX":
+                case "Period":
+                    that.A = false;
+                    break;
+            }
+        }, false);
+
+        // Controls for the bottom paddle
+        this.ctx.canvas.addEventListener("keydown", function (e) {
+            switch (e.code) {
+                case "ArrowLeft":
+                    that.bottomPaddleLeft = true;
+                    break;
+                case "ArrowRight":
+                    that.bottomPaddleRight = true;
+                    break;
+                case "ArrowUp":
+                    that.up = true;
+                    break;
+                case "ArrowDown":
+                    that.down = true;
+                    break;
+                case "KeyZ":
+                case "Comma":
+                    that.B = true;
+                    break;
+                case "KeyX":
+                case "Period":
+                    that.A = true;
+                    break;
+            }
+        }, false);
+
+        this.ctx.canvas.addEventListener("keyup", function (e) {
+            switch (e.code) {
+                case "ArrowLeft":
+                    that.bottomPaddleLeft = false;
+                    break;
+                case "ArrowRight":
+                    that.bottomPaddleRight = false;
+                    break;
+                case "ArrowUp":
+                    that.up = false;
+                    break;
+                case "ArrowDown":
                     that.down = false;
                     break;
                 case "KeyZ":

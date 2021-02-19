@@ -4,6 +4,8 @@ class Ball {
 
         // sprite sheet
         this.spritesheet = ASSET_MANAGER.getAsset("../assets/images/earth.png");
+        
+        this.gameEngine = GameEngine;
 
         this.GAME_WIDTH = gameEngine.GAME_WIDTH;
         this.GAME_HEIGHT = gameEngine.GAME_HEIGHT;
@@ -15,6 +17,10 @@ class Ball {
 
         };
 
+        this.currentSpeed = {
+            x: (Math.random() * 15 + 5) * (Math.floor(Math.random() * 2) || -1),
+            y: (Math.random() * 15 + 5) * (Math.floor(Math.random() * 2) || -1)
+        }
 
         this.size = 250;
     }
@@ -31,38 +37,37 @@ class Ball {
     }
 
     update(deltaTime) {
-        // this.position.x += this.currentSpeed.x;
-        // this.position.y += this.currentSpeed.y;
+        this.position.x += this.currentSpeed.x;
+        this.position.y += this.currentSpeed.y;
     
         // // Setting up the boundary of the left or right for the ball
-        // if (this.position.x + this.size > this.GAME_WIDTH || this.position.x < 0) {
-        //   this.currentSpeed.x = -this.currentSpeed.x;
-        // }
+        if (this.position.x + this.size - 100> this.GAME_WIDTH || this.position.x + 100 < 0) {
+          this.currentSpeed.x = -this.currentSpeed.x;
+        }
         // // Wall on the top or the bottom
-        // if (this.position.y + this.size > this.GAME_HEIGHT || this.position.y < 0) {
-        //   this.currentSpeed.y = -this.currentSpeed.y;
-        // }
+        if (this.position.y + this.size - 100 > this.GAME_HEIGHT || this.position.y +100 < 0) {
+          this.currentSpeed.y = -this.currentSpeed.y;
+        }
     
         // // const result_div = document.querySelector(".result > p");
         // // var counter = 0;
     
         // // Check collision with paddle
-        // let bottomOfBall = this.position.y + this.size;
-        // let topOfPaddle = this.Game.paddle.position.y;
-        // let leftSideOfPaddle = this.Game.paddle.position.x;
-        // let rightSideOfPaddle =
-        //   this.Game.paddle.position.x + this.Game.paddle.width;
+        this.bottomOfBall = this.position.y + this.size;
+        this.topOfPaddle = this.gameEngine.BottomPaddle.position.y;
+        this.leftSideOfPaddle = this.gameEngine.BottomPaddle.position.x;
+        this.rightSideOfPaddle = this.gameEngine.BottomPaddle.position.x + this.gameEngine.BottomPaddle.width;
     
-        // if (
-        //   bottomOfBall >= topOfPaddle &&
-        //   this.position.x >= leftSideOfPaddle &&
-        //   this.position.x + this.size <= rightSideOfPaddle
-        // ) {
-        //   // counter++;
-        //   this.currentSpeed.y = -this.currentSpeed.y;
-        //   this.position.y = this.Game.paddle.position.y - this.size;
-        //   // whenever change the counter text to counter but it crashed for some reason.
-        // }
+        if (
+          this.bottomOfBall >= this.topOfPaddle 
+          && this.position.x >= this.leftSideOfPaddle 
+          && this.position.x + this.size <= this.rightSideOfPaddle
+        ) {
+            console.log("sdas");
+            this.currentSpeed.y = -this.currentSpeed.y;
+          this.position.y = this.gameEngine.BottomPaddle.position.y - this.size;
+          // whenever change the counter text to counter but it crashed for some reason.
+        }
 
     }
 
