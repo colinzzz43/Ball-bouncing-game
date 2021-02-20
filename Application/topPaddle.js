@@ -5,10 +5,13 @@ class TopPaddle {
         this.gameEngine = GameEngine;
         this.gameEngine.TopPaddle = this;
 
+        this.hp = 100;
+        this.scores = 0;
+
         this.GAME_WIDTH = gameEngine.GAME_WIDTH;
         this.GAME_HEIGHT = gameEngine.GAME_HEIGHT;
 
-        this.width = 150;
+        this.width = 1300;
         this.height = 30;
 
         this.maxSpeed = 10;
@@ -43,6 +46,9 @@ class TopPaddle {
         if(this.gameEngine.topPaddleRight)
             this.position.x += this.currentSpeed;
 
+        if(this.hp >= 0) {
+            this.width = 1300 * (this.hp / 100);
+       }
     }
 
 

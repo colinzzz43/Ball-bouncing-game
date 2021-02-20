@@ -45,7 +45,17 @@ class Ball {
           this.currentSpeed.x = -this.currentSpeed.x;
         }
         // // Wall on the top or the bottom
-        if (this.position.y + this.size - 100 > this.GAME_HEIGHT || this.position.y +100 < 0) {
+        if (this.position.y + this.size - 100 > this.GAME_HEIGHT) {
+          if (this.gameEngine.BottomPaddle.hp > 0) {
+            this.gameEngine.BottomPaddle.hp -= 10;
+          }
+          this.currentSpeed.y = -this.currentSpeed.y;
+        }
+
+        if (this.position.y +100 < 0){
+          if (this.gameEngine.TopPaddle.hp > 0) {
+            this.gameEngine.TopPaddle.hp -= 10;
+          }
           this.currentSpeed.y = -this.currentSpeed.y;
         }
     
@@ -60,11 +70,11 @@ class Ball {
     
         if (
           this.bottomOfBall >= this.topOfPaddle 
-          && this.position.x >= this.leftSideOfPaddle 
-          && this.position.x + this.size <= this.rightSideOfPaddle
+          && this.position.x + 5>= this.leftSideOfPaddle 
+          
+          && this.position.x + this.size -5<= this.rightSideOfPaddle
         ) {
-            console.log("sdas");
-            this.currentSpeed.y = -this.currentSpeed.y;
+          this.currentSpeed.y = -this.currentSpeed.y;
           this.position.y = this.gameEngine.BottomPaddle.position.y - this.size;
           // whenever change the counter text to counter but it crashed for some reason.
         }

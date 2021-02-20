@@ -3,15 +3,18 @@ class BottomPaddle {
 
     constructor (gameEngine) {
 
+        this.hp = 100;
+
+        this.scores = 0;
+
         this.gameEngine = gameEngine;
         this.gameEngine.BottomPaddle = this;
 
         this.GAME_WIDTH = gameEngine.GAME_WIDTH;
         this.GAME_HEIGHT = gameEngine.GAME_HEIGHT;
 
-        this.width = 150;
         this.height = 30;
-
+        this.width = 1300;
         this.maxSpeed = 10;
         this.currentSpeed = 10;
 
@@ -35,12 +38,15 @@ class BottomPaddle {
         this.position.x = this.GAME_WIDTH - this.width;
 
         if(this.gameEngine.bottomPaddleLeft) 
-        this.position.x  -= this.currentSpeed;
+            this.position.x  -= this.currentSpeed;
         if(this.gameEngine.bottomPaddleRight)
-        this.position.x += this.currentSpeed;
-
+            this.position.x += this.currentSpeed;
+        if(this.hp >= 0) {
+            this.width = 1300 * (this.hp / 100);
+        }
 
     }
+
 
 
     draw(context) {

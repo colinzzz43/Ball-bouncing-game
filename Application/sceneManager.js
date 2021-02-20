@@ -2,16 +2,16 @@ class SceneManager {
     constructor(game) {
       this.game = game;
       this.game.camera = this;
-  
+
 
       // Timer
       this.TIME_LIMIT = 20;
-  
       this.timePassed = 0;
       this.timeLeft = this.TIME_LIMIT;
       this.timerInterval = null;
       this.startTimer();
 
+      this.winningMessage = null;
     }
     startTimer() {
       this.timerInterval = setInterval(() => {
@@ -24,8 +24,17 @@ class SceneManager {
       }, 1000);
     }
   
+    Winner() {
+      if (this.game.TopPaddle.hp > this.game.BottomPaddle.hp)
+        this.winningMessage = "Top Player is winning"
+      else if (this.game.TopPaddle.hp < this.game.BottomPaddle.hp)
+        this.winningMessage = "Bottom Player is winning"
+      else 
+        this.winningMessage = "Tie"
+    }
 
     update() {
+      this.Winner();
 
     }
   
@@ -36,14 +45,17 @@ class SceneManager {
     }
     gameStatsDisplay(ctx) {
       ctx.fillStyle = "White";
-      ctx.fillText("Tower Defense", 1.5 * 60, 1 * this.height);
-     
-  
-        ctx.fillText("HP", 9.5 * 60, 1 * this.height);
-      
-      ctx.fillText(this.waves + " / 10 waves", 9.5 * 60, 1.1 * this.height);
-      ctx.fillText("TIME", 12.7 * 60, 1 * this.height);
-      ctx.fillText(this.timeLeft, 13 * 60, 1.1 * this.height);
+      ctx.font = "40px Georgia";
+      ctx.fillText("Ball Bouncing Game", 780, 300);     
+      ctx.fillText("__________________________________________________________________________", 0, 320);     
+      ctx.font = "20px Georgia";
+      ctx.fillText("Top Player         : " + this.game.TopPaddle.hp + " Health", 550, 370);
+      ctx.fillText("Bottom Player  : " + this.game.BottomPaddle.hp  + " Health", 550, 420);
+      ctx.fillText("            |  " + this.game.TopPaddle.scores + " Points", 850, 370);
+      ctx.fillText("            |  " + this.game.BottomPaddle.scores  + " Points", 850, 420);
+      ctx.font = "20px Georgia";
+      ctx.fillText("  | Time Left: " + this.timeLeft + " seconds", 1100, 370);
+      ctx.fillText("  | " + this.winningMessage , 1100, 420);
 }
 
   }
