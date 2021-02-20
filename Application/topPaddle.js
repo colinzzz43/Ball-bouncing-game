@@ -11,7 +11,7 @@ class TopPaddle {
         this.GAME_WIDTH = gameEngine.GAME_WIDTH;
         this.GAME_HEIGHT = gameEngine.GAME_HEIGHT;
 
-        this.width = 1300;
+        this.width = 800;
         this.height = 30;
 
         this.maxSpeed = 10;
@@ -24,11 +24,6 @@ class TopPaddle {
             y: 20
 
         };
-
-
-        
-
-        
 
     }
 
@@ -47,13 +42,14 @@ class TopPaddle {
             this.position.x += this.currentSpeed;
 
         if(this.hp >= 0) {
-            this.width = 1300 * (this.hp / 100);
+            this.width = 800 * (this.hp / 100);
        }
     }
 
 
     draw(context) {
         context.fillStyle = "purple";
+
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 

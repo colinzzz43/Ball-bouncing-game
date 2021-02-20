@@ -6,14 +6,15 @@ class Ball {
         this.spritesheet = ASSET_MANAGER.getAsset("../assets/images/earth.png");
         
         this.gameEngine = GameEngine;
+        this.sceneManager = this.gameEngine.sceneManager;
 
         this.GAME_WIDTH = gameEngine.GAME_WIDTH;
         this.GAME_HEIGHT = gameEngine.GAME_HEIGHT;
 
         this.position = {
 
-            x: this.GAME_WIDTH / 2.3,
-            y: this.GAME_HEIGHT / 3
+            x: this.GAME_WIDTH / 25,
+            y: this.GAME_HEIGHT / 3.3
 
         };
 
@@ -37,9 +38,12 @@ class Ball {
     }
 
     update(deltaTime) {
+      this.timer = this.sceneManager.timeLeft;
+      if (this.timer <= 0 ){
         this.position.x += this.currentSpeed.x;
         this.position.y += this.currentSpeed.y;
-    
+
+      }
         // // Setting up the boundary of the left or right for the ball
         if (this.position.x + this.size - 100> this.GAME_WIDTH || this.position.x + 100 < 0) {
           this.currentSpeed.x = -this.currentSpeed.x;
@@ -63,16 +67,15 @@ class Ball {
         // // var counter = 0;
     
         // // Check collision with paddle
-        this.bottomOfBall = this.position.y + this.size;
+        this.bottomOfBall = this.position.y ;
         this.topOfPaddle = this.gameEngine.BottomPaddle.position.y;
         this.leftSideOfPaddle = this.gameEngine.BottomPaddle.position.x;
         this.rightSideOfPaddle = this.gameEngine.BottomPaddle.position.x + this.gameEngine.BottomPaddle.width;
     
         if (
-          this.bottomOfBall >= this.topOfPaddle 
-          && this.position.x + 5>= this.leftSideOfPaddle 
-          
-          && this.position.x + this.size -5<= this.rightSideOfPaddle
+          this.bottomOfBall + this.size>= this.topOfPaddle 
+          && this.position.x >= this.leftSideOfPaddle 
+          && this.position.x + this.size<= this.rightSideOfPaddle
         ) {
           this.currentSpeed.y = -this.currentSpeed.y;
           this.position.y = this.gameEngine.BottomPaddle.position.y - this.size;

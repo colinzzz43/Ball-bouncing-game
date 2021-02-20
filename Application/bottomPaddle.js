@@ -14,7 +14,7 @@ class BottomPaddle {
         this.GAME_HEIGHT = gameEngine.GAME_HEIGHT;
 
         this.height = 30;
-        this.width = 1300;
+        this.width = 800;
         this.maxSpeed = 10;
         this.currentSpeed = 10;
 
@@ -42,7 +42,7 @@ class BottomPaddle {
         if(this.gameEngine.bottomPaddleRight)
             this.position.x += this.currentSpeed;
         if(this.hp >= 0) {
-            this.width = 1300 * (this.hp / 100);
+            this.width = 800 * (this.hp / 100);
         }
 
     }

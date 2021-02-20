@@ -20,6 +20,8 @@ ASSET_MANAGER.downloadAll(function () {
     gameEngine.addEntity(sceneManager);
     gameEngine.addEntity(topPaddle);
     gameEngine.addEntity(bottomPaddle);
+
+    
     var ball = new Ball(gameEngine);
     var ball2 = new Ball(gameEngine);
     var ball3 = new Ball(gameEngine);

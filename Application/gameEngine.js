@@ -2,7 +2,7 @@
 
 class GameEngine {
     constructor() {
-        this.GAME_WIDTH = 1900;
+        this.GAME_WIDTH = 1500;
         this.GAME_HEIGHT = 900;
 
         this.entities = [];
