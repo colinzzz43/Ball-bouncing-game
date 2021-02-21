@@ -24,13 +24,14 @@ class Ball {
         }
 
         this.size = 250;
+        this.radius = 8.9;
     }
 
     draw (context) {
         context.drawImage(
             this.spritesheet,
             this.position.x,
-            this.position.y,
+            this.position.y,  
             this.size,
             this.size
           );
@@ -67,20 +68,35 @@ class Ball {
         // // var counter = 0;
     
         // // Check collision with paddle
-        this.bottomOfBall = this.position.y ;
+        this.topOfBall = this.position.y - this.radius;
+        this.bottomOfBall = this.position.y + this.radius;
+        this.leftOfBall = this.position.x - this.radius;
+        this.rightOfBall = this.position.x + this.radius;
+
+
         this.topOfPaddle = this.gameEngine.BottomPaddle.position.y;
         this.leftSideOfPaddle = this.gameEngine.BottomPaddle.position.x;
         this.rightSideOfPaddle = this.gameEngine.BottomPaddle.position.x + this.gameEngine.BottomPaddle.width;
+
+        this.bottomOfPaddle = this.gameEngine.TopPaddle.position.y;
     
         if (
-          this.bottomOfBall + this.size>= this.topOfPaddle 
+          this.bottomOfBall + 130 >= this.topOfPaddle 
           && this.position.x >= this.leftSideOfPaddle 
-          && this.position.x + this.size<= this.rightSideOfPaddle
+          && this.position.x + this.size < this.rightSideOfPaddle
         ) {
           this.currentSpeed.y = -this.currentSpeed.y;
           this.position.y = this.gameEngine.BottomPaddle.position.y - this.size;
-          // whenever change the counter text to counter but it crashed for some reason.
         }
+
+        // if (
+        //   this.topOfBall + this.size >= this.bottomOfPaddle 
+        //   && this.position.x >= this.leftSideOfPaddle 
+        //   && this.position.x + this.size < this.rightSideOfPaddle
+        // ) {
+        //   this.position.y = this.gameEngine.TopPaddle.position.y;
+        //   this.currentSpeed.y = -this.currentSpeed.y;
+        // }
 
     }
 

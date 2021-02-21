@@ -26,8 +26,8 @@ ASSET_MANAGER.downloadAll(function () {
     var ball2 = new Ball(gameEngine);
     var ball3 = new Ball(gameEngine);
     gameEngine.addEntity(ball);
-    gameEngine.addEntity(ball2);
-    gameEngine.addEntity(ball3);
+    // gameEngine.addEntity(ball2);
+    // gameEngine.addEntity(ball3);
     gameEngine.init(ctx);
     gameEngine.start();
 

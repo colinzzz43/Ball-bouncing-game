@@ -6,7 +6,7 @@ class SceneManager {
       this.game.sceneManager = this;
 
       // Timer
-      this.TIME_LIMIT = 20;
+      this.TIME_LIMIT = 0;
       this.timePassed = 0;
       this.timeLeft = this.TIME_LIMIT;
       this.timerInterval = null;
