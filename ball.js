@@ -3,7 +3,7 @@ class Ball {
     constructor(GameEngine) {
 
         // sprite sheet
-        this.spritesheet = ASSET_MANAGER.getAsset("../assets/images/earth.png");
+        this.spritesheet = ASSET_MANAGER.getAsset("./assets/earth.png");
         
         this.gameEngine = GameEngine;
         this.sceneManager = this.gameEngine.sceneManager;

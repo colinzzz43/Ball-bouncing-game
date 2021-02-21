@@ -1,6 +1,6 @@
 
   * {
-    background-color: rgb(0, 0, 0);
+    background: url('./assets/background.png');
   }
   
   #gameWorld {

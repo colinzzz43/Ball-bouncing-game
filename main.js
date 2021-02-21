@@ -1,9 +1,7 @@
 var gameEngine = new GameEngine();
 
 var ASSET_MANAGER = new AssetManager();
-ASSET_MANAGER.queueDownload("../assets/images/earth.png");
-ASSET_MANAGER.queueDownload("../assets/images/background.png");
-ASSET_MANAGER.queueDownload("../assets/images/earth.png");
+ASSET_MANAGER.queueDownload("./assets/earth.png");
 
 
 
@@ -26,8 +24,8 @@ ASSET_MANAGER.downloadAll(function () {
     var ball2 = new Ball(gameEngine);
     var ball3 = new Ball(gameEngine);
     gameEngine.addEntity(ball);
-    // gameEngine.addEntity(ball2);
-    // gameEngine.addEntity(ball3);
+    gameEngine.addEntity(ball2);
+    gameEngine.addEntity(ball3);
     gameEngine.init(ctx);
     gameEngine.start();
 
