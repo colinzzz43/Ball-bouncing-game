@@ -13,14 +13,14 @@ class Ball {
 
         this.position = {
 
-            x: this.GAME_WIDTH / 25,
-            y: this.GAME_HEIGHT / 3.3
+            x: this.GAME_WIDTH / 10,
+            y: this.GAME_HEIGHT / 10
 
         };
 
         this.currentSpeed = {
-            x: (Math.random() * 15 + 5) * (Math.floor(Math.random() * 2) || -1),
-            y: (Math.random() * 15 + 5) * (Math.floor(Math.random() * 2) || -1)
+            x: (Math.random() * 15 + 5) * (Math.floor(Math.random() * 2) || -1) / 5,
+            y: (Math.random() * 15 + 5) * (Math.floor(Math.random() * 2) || -1) / 5
         }
 
         this.size = 250;
